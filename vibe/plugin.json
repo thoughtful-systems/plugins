@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "vibe",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Build, publish, share, discover, and use governed team tools through Vibe.",
   "author": {
     "name": "Vibe"

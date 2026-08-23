@@ -76,11 +76,17 @@ Queue delivery and network outcomes can be at least once or ambiguous.
 1. Use stable business idempotency keys when supported.
 2. Do not generate a new idempotency key for a byte-for-byte retry of the same
    intended mutation.
-3. Inspect run state before retrying a timed-out HTTP write.
+3. Do not catch and retry a timed-out external write inside a composed call.
+   Inspect run state before retrying it.
 4. If provider success cannot be established, report ambiguity and ask the
    user rather than risking a duplicate.
 5. Never claim exactly-once behavior unless the selected tool's contract
    explicitly provides it.
+
+For a partially failed composition, preserve each underlying outcome. Never
+replay the whole composition or a member that definitely succeeded. Inspect
+each ambiguous run independently, and scope any fresh confirmation and retry
+to that exact remaining run.
 
 ## Tasks
 

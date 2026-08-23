@@ -5,14 +5,14 @@
     "url": "https://thoughtful.systems"
   },
   "description": "Skills and MCP-powered plugins from Thoughtful Systems.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "plugins": [
     {
       "name": "vibe",
       "displayName": "Vibe",
       "source": "./vibe",
       "description": "Build, publish, share, discover, and use governed team tools through Vibe.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": {
         "name": "Thoughtful Systems",
         "url": "https://thoughtful.systems"

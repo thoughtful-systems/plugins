@@ -69,6 +69,10 @@ calls an external API, or triggers background work:
 
 Do not automatically retry an external write after a timeout or ambiguous
 failure. Inspect the run or ask the user before risking a duplicate.
+Do not implement timeout retry loops or catch-and-retry wrappers inside a
+`vibe_use` composition. Stable idempotency identity supports deliberate
+recovery; it does not establish the provider outcome or make an automatic
+replay safe.
 
 Run history and retry controls are management APIs. When the request includes
 a run ID, timeout, or ambiguous provider outcome, switch to build mode and
@@ -76,6 +80,13 @@ discover the exact `get_run` type before deciding what happened. Looking up
 the related work order, invoice, ticket, or other business record is not a
 substitute for inspecting the version-pinned run. Use `retry_run` only after
 the run evidence and required confirmation support it.
+
+When a composed call partially succeeds, preserve the per-method run evidence.
+Do not replay the composition or any confirmed success. Switch to build mode,
+inspect each ambiguous run ID, and separate successful, failed, and unknown
+targets in the response. If completing the original request would require an
+ambiguous retry, present only that remaining target and obtain fresh informed
+confirmation before retrying its exact run.
 
 ## 5. Respond to catalog and execution changes
 

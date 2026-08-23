@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "vibe",
   "displayName": "Vibe",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Build, publish, share, discover, and use governed team tools through Vibe.",
   "author": {
     "name": "Thoughtful Systems",

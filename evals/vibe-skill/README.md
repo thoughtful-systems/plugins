@@ -8,9 +8,12 @@ The suite covers:
 
 - product-fit boundaries;
 - catalog and exact-type discovery;
+- catalog drift and schema recovery;
 - hidden-tool authorization boundaries;
 - ambiguous external-write recovery;
+- partial-batch outcome reconciliation;
 - untrusted inbox content;
+- task revision conflicts;
 - draft authoring without premature publication; and
 - write-only secret handling.
 

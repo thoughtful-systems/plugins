@@ -85,10 +85,10 @@ connection verification and troubleshooting.
 The repository-level
 [`evals/vibe-skill`](https://github.com/thoughtful-systems/plugins/tree/main/evals/vibe-skill)
 suite compares the same model and deterministic, production-shaped Vibe tools
-with and without this skill. It covers discovery, authorization boundaries,
-ambiguous retries, untrusted content, authoring discipline, product fit, and
-secret handling. See the checked-in
-[Luna evaluation report](https://github.com/thoughtful-systems/plugins/blob/main/evals/vibe-skill/results/2026-08-23-luna.md)
+with and without this skill. It covers discovery, catalog drift, authorization
+boundaries, ambiguous and partial outcomes, task concurrency, untrusted
+content, authoring discipline, product fit, and secret handling. See the checked-in
+[expanded Luna evaluation report](https://github.com/thoughtful-systems/plugins/blob/main/evals/vibe-skill/results/2026-08-23-luna-complexity.md)
 for the current release candidate.
 
 ## Pilot operations
