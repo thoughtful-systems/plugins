@@ -1,0 +1,20 @@
+{
+  "name": "@thoughtful-systems/plugins",
+  "private": true,
+  "repository": "https://github.com/thoughtful-systems/plugins",
+  "type": "module",
+  "scripts": {
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "validate": "bun run format:check && bun run validate:metadata && bun run validate:claude",
+    "validate:metadata": "bun scripts/validate-agent-plugins.ts",
+    "validate:claude": "claude plugin validate vibe --strict && claude plugin validate . --strict",
+    "test:install": "bun scripts/test-installs.ts"
+  },
+  "devDependencies": {
+    "@anthropic-ai/claude-code": "2.1.241",
+    "@openai/codex": "0.149.0",
+    "@types/bun": "1.3.14",
+    "oxfmt": "0.62.0"
+  }
+}

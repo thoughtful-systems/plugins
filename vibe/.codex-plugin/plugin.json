@@ -1,0 +1,32 @@
+{
+  "name": "vibe",
+  "version": "0.1.0",
+  "description": "Build, publish, share, discover, and use governed team tools through Vibe.",
+  "author": {
+    "name": "Vibe",
+    "url": "https://vibe.sam.engineer"
+  },
+  "homepage": "https://vibe.sam.engineer",
+  "repository": "https://github.com/thoughtful-systems/plugins/tree/main/vibe",
+  "keywords": ["mcp", "tools", "tool-authoring", "automation", "agent-skills"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Vibe",
+    "shortDescription": "Build and run governed team tools",
+    "longDescription": "Use Vibe to discover and run authorized team tools, or safely create, validate, test, publish, share, automate, and operate new governed capabilities through one OAuth-protected MCP connection.",
+    "developerName": "Vibe",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "websiteURL": "https://vibe.sam.engineer",
+    "defaultPrompt": [
+      "Show me the tools and apps I can use in Vibe.",
+      "Explain what Vibe can and cannot do.",
+      "Help me build and safely publish a Vibe tool."
+    ],
+    "brandColor": "#10217B",
+    "composerIcon": "./assets/vibe-mark.svg",
+    "logo": "./assets/vibe-mark.svg",
+    "screenshots": []
+  }
+}

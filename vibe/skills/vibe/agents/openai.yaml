@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe"
+  short_description: "Build and run governed team tools"
+  default_prompt: "Use $vibe to explain the platform or safely discover, build, and run a Vibe tool."
