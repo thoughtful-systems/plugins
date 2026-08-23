@@ -5,9 +5,10 @@
     "moduleDetection": "force",
     "moduleResolution": "bundler",
     "noEmit": true,
+    "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
     "types": ["bun"]
   },
-  "include": ["scripts/**/*.ts"]
+  "include": ["evals/**/*.ts", "scripts/**/*.ts"]
 }

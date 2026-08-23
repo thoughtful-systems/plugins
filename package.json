@@ -6,15 +6,24 @@
   "scripts": {
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
-    "validate": "bun run format:check && bun run validate:metadata && bun run validate:claude",
+    "typecheck": "tsc -p tsconfig.json",
+    "test:grading": "bun test evals/vibe-skill/cases.test.ts",
+    "validate": "bun run format:check && bun run typecheck && bun run test:grading && bun run validate:metadata && bun run validate:claude",
     "validate:metadata": "bun scripts/validate-agent-plugins.ts",
     "validate:claude": "claude plugin validate vibe --strict && claude plugin validate . --strict",
-    "test:install": "bun scripts/test-installs.ts"
+    "test:install": "bun scripts/test-installs.ts",
+    "eval:skill": "bun scripts/evaluate-vibe-skill.ts",
+    "eval:skill:dry": "bun scripts/evaluate-vibe-skill.ts --dry-run",
+    "eval:skill:regrade": "bun scripts/regrade-vibe-skill.ts"
   },
   "devDependencies": {
     "@anthropic-ai/claude-code": "2.1.241",
+    "@earendil-works/pi-ai": "0.84.2",
+    "@earendil-works/pi-coding-agent": "0.84.2",
     "@openai/codex": "0.149.0",
     "@types/bun": "1.3.14",
-    "oxfmt": "0.62.0"
+    "oxfmt": "0.62.0",
+    "typebox": "1.3.7",
+    "typescript": "7.0.2"
   }
 }

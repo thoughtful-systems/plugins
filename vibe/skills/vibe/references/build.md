@@ -114,6 +114,9 @@ After every grant, revocation, or organization policy change, call
 Discover live types before configuring schedules, signed webhooks, jobs,
 approvals, migrations, or runs.
 
+- Treat a supplied run ID as the primary recovery target. Load `get_run` and
+  inspect that exact run before searching related app records or considering a
+  retry.
 - Schedules and jobs pin exact published versions and input at admission.
 - Migrations are immutable, ordered, and app-scoped.
 - Retries retain the original version and input; they do not float to the

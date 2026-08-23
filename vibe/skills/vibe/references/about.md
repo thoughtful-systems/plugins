@@ -70,7 +70,9 @@ infrastructure control.
 When answering a fit question, state the desired outcome, map it to current
 Vibe primitives, identify any missing primitive, and distinguish an
 implemented capability from a roadmap idea. Confirm exact current schemas and
-availability through the connected MCP catalog before proposing a build. When
-deployment feature state matters, inspect the public `/status` response too;
-do not promise an implemented capability that the connected deployment has
-disabled.
+availability through the connected MCP catalog before proposing a build when
+the recommendation depends on those live details. If a hard boundary above
+already rules the use case out, do not probe unrelated organization tools just
+to confirm the boundary. When deployment feature state matters, inspect the
+public `/status` response too; do not promise an implemented capability that
+the connected deployment has disabled.

@@ -80,6 +80,17 @@ structured error data.
 See [`skills/vibe/references/setup.md`](skills/vibe/references/setup.md) for
 connection verification and troubleshooting.
 
+## Skill evaluations
+
+The repository-level
+[`evals/vibe-skill`](https://github.com/thoughtful-systems/plugins/tree/main/evals/vibe-skill)
+suite compares the same model and deterministic, production-shaped Vibe tools
+with and without this skill. It covers discovery, authorization boundaries,
+ambiguous retries, untrusted content, authoring discipline, product fit, and
+secret handling. See the checked-in
+[Luna evaluation report](https://github.com/thoughtful-systems/plugins/blob/main/evals/vibe-skill/results/2026-08-23-luna.md)
+for the current release candidate.
+
 ## Pilot operations
 
 In build mode, discover `simulate_workflow`, `list_templates`, `export_app`,

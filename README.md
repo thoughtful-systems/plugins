@@ -48,5 +48,9 @@ bun run test:install
 and Claude's strict validator. `test:install` installs the local marketplace
 into isolated Codex and Claude configuration directories.
 
+The optional `bun run eval:skill` suite compares Vibe behavior with and without
+the skill using a selected model and deterministic mock tools. It requires a
+configured Pi model provider and does not run in CI.
+
 See [`vibe/PUBLISHING.md`](./vibe/PUBLISHING.md) for the remaining directory
 submission gates.

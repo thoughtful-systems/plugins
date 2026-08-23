@@ -12,8 +12,11 @@ connected Vibe MCP server for both consumption and authoring.
 
 1. Treat the connected server as the source of truth. Never guess a catalog
    namespace, method, builder action input, or tool schema.
-2. Use `toggle_build_mode({ mode: "use" | "build" })` explicitly. The choice
-   is credential-scoped and idempotent; it is not an authorization grant.
+2. Use `toggle_build_mode({ mode: "use" | "build" })` explicitly. Use mode is
+   for published business tools; build mode is also the management surface for
+   run inspection/retry, releases, access, secrets, integrations, automation,
+   and authoring. The choice is credential-scoped and idempotent; it is not an
+   authorization grant.
 3. In either mode, inspect `vibe_catalog` before composing calls with
    `vibe_use`.
 4. Every operation runs as the authenticated user and is authorized again at
@@ -36,12 +39,20 @@ connected Vibe MCP server for both consumption and authoring.
 | Install, authenticate, verify, or troubleshoot the connection | [Setup](./references/setup.md) |
 | Discover, inspect, and run published tools | [Use tools](./references/use.md) |
 | Create, test, publish, share, automate, or operate apps | [Build and manage](./references/build.md) |
+| Inspect, cancel, or retry a failed/ambiguous run | [Build and manage](./references/build.md) and [Safety](./references/safety.md) |
 | Write or review a tool module and its capabilities | [Tool authoring](./references/authoring.md) |
 | Confirm privileged actions or handle untrusted content and failures | [Safety](./references/safety.md) |
 
 For a new tool, read both the build and authoring references. For any action
 that changes authority or can create an external side effect, also read the
 safety reference.
+
+For a general fit question that is already ruled out by a hard platform
+boundary—such as a bespoke UI, hard realtime collaboration, arbitrary
+networking, or a long-running service—answer directly from the About reference.
+Do not probe the caller's unrelated organization catalog. Query the live
+catalog only when the recommendation depends on currently authorized tools,
+exact schemas, or a deployment feature that may vary.
 
 ## Default use workflow
 
@@ -79,6 +90,20 @@ safety reference.
    access requested.
 10. Return to use mode, rediscover the published types, invoke the tool, and
    report the result or inspect the recorded run if it fails.
+
+## Default run-recovery workflow
+
+1. Treat an exact run ID as an operational target. Select build mode and
+   discover the live `get_run` type; do not substitute a related business
+   record, catalog entry, or tool invocation for run inspection.
+2. Inspect the version-pinned run and preserve its run ID, input, error code,
+   correlation ID, and external-outcome state.
+3. If an external write may already have succeeded, stop before `retry_run`.
+   Explain the duplicate-effect risk and obtain fresh informed confirmation.
+4. After confirmation, retrieve the current `retry_run` type and retry the
+   exact recorded version/input with the original stable idempotency identity
+   when the live schema supports it. Never turn a run retry into a fresh tool
+   call merely because the business record is still open.
 
 Use [`assets/tool-template.js`](./assets/tool-template.js) as a starting shape,
 not as a substitute for retrieving live builder schemas.

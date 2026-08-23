@@ -96,8 +96,11 @@ the current authenticated user first.
 When an operation fails:
 
 1. Preserve the original error and run ID when available.
-2. Refresh exact catalog types if the interface may have changed.
-3. Inspect the run before deciding whether a retry is safe.
+2. For a run ID, select build mode, load the live `get_run` type, and inspect
+   that exact version-pinned run. A related business record is not equivalent
+   evidence.
+3. Refresh exact catalog types if the interface may have changed, then decide
+   whether a retry is safe.
 4. Do not weaken schemas, capabilities, access checks, or isolation to force a
    success.
 5. Report what is known, what is ambiguous, and the smallest safe next step.

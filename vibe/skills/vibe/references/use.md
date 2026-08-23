@@ -70,6 +70,13 @@ calls an external API, or triggers background work:
 Do not automatically retry an external write after a timeout or ambiguous
 failure. Inspect the run or ask the user before risking a duplicate.
 
+Run history and retry controls are management APIs. When the request includes
+a run ID, timeout, or ambiguous provider outcome, switch to build mode and
+discover the exact `get_run` type before deciding what happened. Looking up
+the related work order, invoice, ticket, or other business record is not a
+substitute for inspecting the version-pinned run. Use `retry_run` only after
+the run evidence and required confirmation support it.
+
 ## 5. Respond to catalog and execution changes
 
 Authorization is checked during every underlying call, not just discovery. If
