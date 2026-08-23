@@ -5,20 +5,20 @@
     "url": "https://thoughtful.systems"
   },
   "description": "Skills and MCP-powered plugins from Thoughtful Systems.",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "plugins": [
     {
-      "name": "vibe",
-      "displayName": "Vibe",
-      "source": "./vibe",
-      "description": "Build, publish, share, discover, and use governed team tools through Vibe.",
-      "version": "0.1.2",
+      "name": "system",
+      "displayName": "Thoughtful Systems",
+      "source": "./system",
+      "description": "Build, publish, share, discover, and use governed team tools through Thoughtful Systems.",
+      "version": "0.2.0",
       "author": {
         "name": "Thoughtful Systems",
         "url": "https://thoughtful.systems"
       },
-      "homepage": "https://vibe.sam.engineer",
-      "repository": "https://github.com/thoughtful-systems/plugins/tree/main/vibe",
+      "homepage": "https://thoughtful.systems",
+      "repository": "https://github.com/thoughtful-systems/plugins/tree/main/system",
       "category": "Productivity",
       "tags": ["mcp", "automation", "tool-authoring", "team-tools"]
     }

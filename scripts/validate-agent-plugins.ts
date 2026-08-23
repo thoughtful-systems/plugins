@@ -3,7 +3,8 @@ import { resolve } from "node:path";
 type JsonObject = Record<string, unknown>;
 
 const root = resolve(import.meta.dir, "..");
-const pluginRoot = resolve(root, "vibe");
+const pluginRoot = resolve(root, "system");
+const retiredBrand = ["vi", "be"].join("");
 
 const fail = (message: string): never => {
   throw new TypeError(`Plugin validation failed: ${message}`);
@@ -50,7 +51,7 @@ const requireFile = async (relativePath: string): Promise<void> => {
 const portableManifest = await readJson(resolve(pluginRoot, "plugin.json"));
 const rootPackage = await readJson(resolve(root, "package.json"));
 const repositoryRoot = stringField(rootPackage, "repository", "root package");
-const repositoryUrl = `${repositoryRoot.replace(/\/$/u, "")}/tree/main/vibe`;
+const repositoryUrl = `${repositoryRoot.replace(/\/$/u, "")}/tree/main/system`;
 const codexManifest = await readJson(resolve(pluginRoot, ".codex-plugin/plugin.json"));
 const claudeManifest = await readJson(resolve(pluginRoot, ".claude-plugin/plugin.json"));
 const claudeMarketplace = await readJson(resolve(root, ".claude-plugin/marketplace.json"));
@@ -88,29 +89,29 @@ requireSame("repository URL", [
   repositoryUrl,
 ]);
 
-if (stringField(claudeEntry, "source", "Claude marketplace entry") !== "./vibe") {
-  fail("Claude marketplace source must be ./vibe.");
+if (stringField(claudeEntry, "source", "Claude marketplace entry") !== "./system") {
+  fail("Claude marketplace source must be ./system.");
 }
 const codexSource = objectField(codexEntry, "source", "Codex marketplace entry");
 if (
   stringField(codexSource, "source", "Codex marketplace source") !== "local" ||
-  stringField(codexSource, "path", "Codex marketplace source") !== "./vibe"
+  stringField(codexSource, "path", "Codex marketplace source") !== "./system"
 ) {
-  fail("Codex marketplace source must be local ./vibe.");
+  fail("Codex marketplace source must be local ./system.");
 }
 
 const nativeServer = objectField(
   objectField(nativeMcp, "mcpServers", "native MCP"),
-  "vibe",
+  "system",
   "native MCP.mcpServers",
 );
 const portableServer = objectField(
   objectField(portableMcp, "mcpServers", "portable MCP"),
-  "vibe",
+  "system",
   "portable MCP.mcpServers",
 );
-const nativeUrl = stringField(nativeServer, "url", "native Vibe server");
-const portableUrl = stringField(portableServer, "url", "portable Vibe server");
+const nativeUrl = stringField(nativeServer, "url", "native Thoughtful Systems server");
+const portableUrl = stringField(portableServer, "url", "portable Thoughtful Systems server");
 requireSame("MCP URL", [nativeUrl, portableUrl]);
 
 const endpoint = URL.parse(nativeUrl);
@@ -128,9 +129,9 @@ for (const relativePath of [
   ".codex-plugin/plugin.json",
   ".mcp.json",
   "SETUP.md",
-  "assets/vibe-mark.svg",
-  "skills/vibe/SKILL.md",
-  "skills/vibe/agents/openai.yaml",
+  "assets/system-mark.svg",
+  "skills/system/SKILL.md",
+  "skills/system/agents/openai.yaml",
 ]) {
   await requireFile(relativePath);
 }
@@ -145,9 +146,9 @@ if (
 }
 
 const forbiddenPublicReferences = [
-  ["github.com", "skynnes", "vibe"].join("/"),
-  ["agent", "plugins/vibe"].join("-"),
-  ["apps", "vibe-mcp"].join("/"),
+  ["github.com", "skynnes", "system"].join("/"),
+  ["agent", "plugins/system"].join("-"),
+  ["apps", "system-mcp"].join("/"),
   [".dev", "vars"].join("."),
 ];
 const publicGlob = new Bun.Glob("**/*.{json,md,ts,js,yaml,yml,svg}");
@@ -158,12 +159,20 @@ for await (const relativePath of publicGlob.scan({
 })) {
   if (
     relativePath.startsWith(".git/") ||
+    relativePath.startsWith(".system-skill-evals/") ||
+    relativePath.startsWith("node_modules/") ||
     relativePath === "bun.lock" ||
     relativePath === "scripts/validate-agent-plugins.ts"
   ) {
     continue;
   }
   const contents = await Bun.file(resolve(root, relativePath)).text();
+  if (
+    relativePath.toLowerCase().includes(retiredBrand) ||
+    contents.toLowerCase().includes(retiredBrand)
+  ) {
+    fail(`${relativePath} contains the retired product name.`);
+  }
   for (const forbidden of forbiddenPublicReferences) {
     if (contents.includes(forbidden)) {
       fail(`${relativePath} contains private-repository reference ${forbidden}.`);
@@ -172,5 +181,5 @@ for await (const relativePath of publicGlob.scan({
 }
 
 process.stdout.write(
-  `Validated Vibe plugin ${stringField(codexManifest, "version", "Codex manifest")} for ${nativeUrl}.\n`,
+  `Validated Thoughtful Systems plugin ${stringField(codexManifest, "version", "Codex manifest")} for ${nativeUrl}.\n`,
 );

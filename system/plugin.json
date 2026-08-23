@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "system",
+  "version": "0.2.0",
+  "description": "Build, publish, share, discover, and use governed team tools through Thoughtful Systems.",
+  "author": {
+    "name": "Thoughtful Systems"
+  },
+  "homepage": "https://thoughtful.systems",
+  "repository": "https://github.com/thoughtful-systems/plugins/tree/main/system",
+  "keywords": ["mcp", "tools", "tool-authoring", "automation", "agent-skills"]
+}

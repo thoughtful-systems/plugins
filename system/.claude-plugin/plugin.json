@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "system",
+  "displayName": "Thoughtful Systems",
+  "version": "0.2.0",
+  "description": "Build, publish, share, discover, and use governed team tools through Thoughtful Systems.",
+  "author": {
+    "name": "Thoughtful Systems",
+    "url": "https://thoughtful.systems"
+  },
+  "homepage": "https://thoughtful.systems",
+  "repository": "https://github.com/thoughtful-systems/plugins/tree/main/system",
+  "keywords": ["mcp", "tools", "tool-authoring", "automation", "agent-skills"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

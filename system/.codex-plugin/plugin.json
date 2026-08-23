@@ -1,0 +1,32 @@
+{
+  "name": "system",
+  "version": "0.2.0",
+  "description": "Build, publish, share, discover, and use governed team tools through Thoughtful Systems.",
+  "author": {
+    "name": "Thoughtful Systems",
+    "url": "https://thoughtful.systems"
+  },
+  "homepage": "https://thoughtful.systems",
+  "repository": "https://github.com/thoughtful-systems/plugins/tree/main/system",
+  "keywords": ["mcp", "tools", "tool-authoring", "automation", "agent-skills"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Thoughtful Systems",
+    "shortDescription": "Build and run governed team tools",
+    "longDescription": "Use Thoughtful Systems to discover and run authorized team tools, or safely create, validate, test, publish, share, automate, and operate new governed capabilities through one OAuth-protected MCP connection.",
+    "developerName": "Thoughtful Systems",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "websiteURL": "https://thoughtful.systems",
+    "defaultPrompt": [
+      "Show me the tools and apps I can use in Thoughtful Systems.",
+      "Explain what Thoughtful Systems can and cannot do.",
+      "Help me build and safely publish a Thoughtful Systems tool."
+    ],
+    "brandColor": "#10217B",
+    "composerIcon": "./assets/system-mark.svg",
+    "logo": "./assets/system-mark.svg",
+    "screenshots": []
+  }
+}

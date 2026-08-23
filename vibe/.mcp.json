@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "vibe": {
-      "type": "http",
-      "url": "https://vibe.sam.engineer/mcp"
-    }
-  }
-}

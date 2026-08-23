@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "vibe",
+      "name": "system",
       "source": {
         "source": "local",
-        "path": "./vibe"
+        "path": "./system"
       },
       "policy": {
         "installation": "AVAILABLE",

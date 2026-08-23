@@ -7,14 +7,14 @@
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
     "typecheck": "tsc -p tsconfig.json",
-    "test:grading": "bun test evals/vibe-skill/cases.test.ts",
+    "test:grading": "bun test evals/system-skill/cases.test.ts",
     "validate": "bun run format:check && bun run typecheck && bun run test:grading && bun run validate:metadata && bun run validate:claude",
     "validate:metadata": "bun scripts/validate-agent-plugins.ts",
-    "validate:claude": "claude plugin validate vibe --strict && claude plugin validate . --strict",
+    "validate:claude": "claude plugin validate system --strict && claude plugin validate . --strict",
     "test:install": "bun scripts/test-installs.ts",
-    "eval:skill": "bun scripts/evaluate-vibe-skill.ts",
-    "eval:skill:dry": "bun scripts/evaluate-vibe-skill.ts --dry-run",
-    "eval:skill:regrade": "bun scripts/regrade-vibe-skill.ts"
+    "eval:skill": "bun scripts/evaluate-system-skill.ts",
+    "eval:skill:dry": "bun scripts/evaluate-system-skill.ts --dry-run",
+    "eval:skill:regrade": "bun scripts/regrade-system-skill.ts"
   },
   "devDependencies": {
     "@anthropic-ai/claude-code": "2.1.241",
